@@ -33,13 +33,11 @@ namespace InventoryManagement.Data.Entities
 
     public int MinimumStockLevel { get; set; } = 0;
 
-    [StringLength(100)]
     public ProductCategory Category { get; set; } = ProductCategory.Other;
 
     [StringLength(100)]
     public string Brand { get; set; } = string.Empty;
 
-    [StringLength(50)]
     public ProductUnit Unit { get; set; } = ProductUnit.Piece;
 
     public bool IsActive { get; set; } = true;
