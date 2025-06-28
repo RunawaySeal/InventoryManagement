@@ -134,7 +134,7 @@ namespace InventoryManagement.Data.Context
 
       productEntity.Property(p => p.Unit)
           .HasMaxLength(50)
-          .HasDefaultValue("piece");
+          .HasDefaultValue(ProductUnit.Piece);
 
       productEntity.Property(p => p.IsActive)
           .IsRequired()
