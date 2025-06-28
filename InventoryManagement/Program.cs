@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using InventoryManagement.Data.Context;
+using InventoryManagement.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +13,11 @@ builder.Services.AddDbContext<InventoryManagementDbContext>(options =>
 
 var app = builder.Build();
 
-// Ensure database is created
-using (var scope = app.Services.CreateScope())
-{
-  var context = scope.ServiceProvider.GetRequiredService<InventoryManagementDbContext>();
-  context.Database.EnsureCreated();
-}
+// Migrate and seed database
+await app.Services.MigrateAndSeedDatabaseAsync();
+
+// Use this instead if you want to recreate the database during development:
+// await app.Services.RecreateAndSeedDatabaseAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

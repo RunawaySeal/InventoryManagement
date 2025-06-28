@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using InventoryManagement.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManagement.Data.Entities
@@ -33,13 +34,13 @@ namespace InventoryManagement.Data.Entities
     public int MinimumStockLevel { get; set; } = 0;
 
     [StringLength(100)]
-    public string Category { get; set; } = string.Empty;
+    public ProductCategory Category { get; set; } = ProductCategory.Other;
 
     [StringLength(100)]
     public string Brand { get; set; } = string.Empty;
 
     [StringLength(50)]
-    public string Unit { get; set; } = "piece";
+    public ProductUnit Unit { get; set; } = ProductUnit.Piece;
 
     public bool IsActive { get; set; } = true;
 
